@@ -1,6 +1,7 @@
 const quotesBody = document.querySelector('.quote-content');
 const authorBody = document.querySelector('.quote-author');
 const btn = document.getElementById('btn');
+const tweet = document.querySelector('.tweeter-share-button');
 
 // fetching data from the api
 const getQuotes = async () => {
@@ -33,8 +34,8 @@ function displayQuotes() {
         //var speed = 50; /* The speed/duration of the effect in milliseconds */
         function typeWriter2() {
 
-            if (i < txt2.length) {
-                authorBody.innerHTML += txt2.charAt(i);
+            if (j < txt2.length) {
+                authorBody.innerHTML += txt2.charAt(j);
                 j++;
                 setTimeout(typeWriter2, speed);
             }
@@ -50,3 +51,10 @@ function displayQuotes() {
 // addeventlistner on btn
 btn.addEventListener('click', displayQuotes);
 
+
+const shareToTweet = ()=>{
+    const text = quotesBody.innerText;
+    tweet.href = `https://twitter.com/intent/tweet?text=${text}`;
+    tweet.setAttribute("target", "_blank");
+}
+tweet.addEventListener('click', shareToTweet);
